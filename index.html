@@ -4,6 +4,43 @@
   <meta charset="UTF-8">
   <title>For You ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 💖 Floating Hearts CSS -->
+  <style>
+    .floating-heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-500px) rotate(360deg); }
+    }
+
+    /* ❤️ Step 4.3 – Cute Images Fade + Glow */
+    .surprise-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      opacity: 0; /* initially invisible */
+      box-shadow: 0 0 25px rgba(255,0,100,0.8);
+      animation: fadeGlow 2s ease forwards;
+    }
+
+    @keyframes fadeGlow {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+
 </head>
 
 <body style="margin:0; background:black; height:100vh; display:flex; justify-content:center; align-items:center; font-family:Arial, sans-serif;">
@@ -25,13 +62,54 @@
 
   </div>
 
-  <!-- JavaScript Password Check -->
+  <!-- Audio for music -->
+  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" loop></audio>
+
+  <!-- JavaScript Password Check + Floating Hearts + Cute Images + Music -->
   <script>
+    // Floating Hearts function
+    function createHearts() {
+      for(let i=0; i<30; i++){
+        let heart = document.createElement("div");
+        heart.classList.add("floating-heart");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = 15 + Math.random()*20 + "px";
+        heart.style.animationDuration = 4 + Math.random()*3 + "s";
+        heart.innerHTML = "❤️";
+        document.body.appendChild(heart);
+      }
+    }
+
+    // Show cute images function
+    function showImage() {
+      let img1 = document.createElement("img");
+      img1.src = "https://images.unsplash.com/photo-1555685812-4b943f1a9be0?fit=crop&w=150&h=150";
+      img1.classList.add("surprise-img");
+      document.body.appendChild(img1);
+
+      setTimeout(() => {
+        let img2 = document.createElement("img");
+        img2.src = "https://images.unsplash.com/photo-1573164574396-cf6e4c6c4efc?fit=crop&w=150&h=150";
+        img2.classList.add("surprise-img");
+        document.body.appendChild(img2);
+      }, 1000);
+    }
+
+    // Password check function
     function checkPass() {
       var entered = document.getElementById("pass").value;
 
       if (entered === "GOLU MOLU") {
         alert("Unlocked ❤️ Next surprise coming...");
+
+        // Step 4.2 & 4.3
+        createHearts();  // floating hearts
+        showImage();     // cute images fade + glow
+
+        // Step 4.1 – Play music
+        var music = document.getElementById("bg-music");
+        music.play();
+
       } else {
         alert("Wrong password 😜 Try again");
       }
