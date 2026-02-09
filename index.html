@@ -14,14 +14,29 @@
     <h2 style="color:#ff4d6d;">Private Surprise</h2>
     <p style="color:#aaa;">Only you know this…</p>
 
-    <input type="password" placeholder="Enter password"
+    <!-- Password input -->
+    <input type="password" id="pass" placeholder="Enter password"
       style="width:100%; padding:12px; border-radius:10px; border:none; outline:none; margin-top:15px; font-size:16px;">
 
-    <button style="margin-top:15px; padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:20px; font-size:16px;">
+    <!-- Unlock button -->
+    <button onclick="checkPass()" style="margin-top:15px; padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:20px; font-size:16px;">
       Unlock
     </button>
 
   </div>
+
+  <!-- JavaScript Password Check -->
+  <script>
+    function checkPass() {
+      var entered = document.getElementById("pass").value;
+
+      if (entered === "GOLU MOLU") {
+        alert("Unlocked ❤️ Next surprise coming...");
+      } else {
+        alert("Wrong password 😜 Try again");
+      }
+    }
+  </script>
 
 </body>
 </html>
