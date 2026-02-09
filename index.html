@@ -1,191 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For You ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Happy Birthday Ankita 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 🌟 Floating Hearts + Sparkles CSS -->
-  <style>
-    body {
-      margin:0; 
-      background:black; 
-      font-family: Arial, sans-serif;
-      overflow:hidden;
-      position: relative;
-    }
+<!-- 🌟 Premium Colors + Floating Elements -->
+<style>
+body {
+  margin:0;
+  background: linear-gradient(135deg, #1c1c1c, #ff4d6d);
+  font-family: 'Arial', sans-serif;
+  overflow:hidden;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
 
-    /* Lock Screen */
-    #lockScreen {
-      position: fixed;
-      top:0; left:0; width:100%; height:100%;
-      background:#111;
-      display:flex; justify-content:center; align-items:center;
-      flex-direction: column;
-      transition: opacity 1s ease;
-      z-index:1000;
-    }
+/* Lock Screen */
+#lockScreen {
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:1000;
+  transition: opacity 1s ease;
+}
 
-    #lockScreen.fadeOut {
-      opacity:0;
-      pointer-events:none;
-    }
+#lockScreen.fadeOut {
+  opacity:0;
+  pointer-events:none;
+}
 
-    #lockScreen input, #lockScreen button {
-      padding:12px; font-size:16px; border-radius:10px; border:none; margin-top:15px; outline:none;
-    }
+#lockScreen input, #lockScreen button {
+  padding:12px; font-size:16px; border-radius:10px; border:none; margin-top:15px; outline:none;
+}
 
-    #lockScreen button {
-      background:#ff4d6d; color:white; cursor:pointer; border-radius:20px; padding:10px 20px;
-    }
+#lockScreen button {
+  background:#ff4d6d; color:white; cursor:pointer; border-radius:20px; padding:10px 20px;
+}
 
-    #lockScreen h2 {
-      color:#ff4d6d; margin-bottom:5px;
-    }
+#lockScreen h2 {
+  color:#ff4d6d; margin-bottom:5px;
+}
 
-    #lockScreen p {
-      color:#aaa;
-      margin-bottom:15px;
-    }
+#lockScreen p {
+  color:#aaa;
+  margin-bottom:15px;
+}
 
-    /* Floating hearts & sparkles */
-    .floating-heart, .sparkle {
-      position:absolute;
-      pointer-events:none;
-      opacity:0.8;
-      font-size: 15px;
-      animation: floatUp 5s linear infinite;
-    }
+/* Floating Stickers */
+.sticker {
+  position:absolute;
+  pointer-events:none;
+  font-size:25px;
+  animation: floatUp 6s linear infinite;
+}
 
-    .sparkle {
-      font-size:10px;
-      color:#fff;
-      opacity:0.6;
-      animation-duration:3s;
-    }
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-600px) rotate(360deg); }
+}
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-600px) rotate(360deg); }
-    }
+/* Card */
+#birthdayCard {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  background: #ff4d6d;
+  padding:30px;
+  border-radius:25px;
+  width:300px;
+  max-width:90%;
+  text-align:center;
+  box-shadow:0 0 30px rgba(255,255,255,0.5);
+  display:none;
+}
 
-    /* Images fade + glow */
-    .surprise-img {
-      position: absolute;
-      top:50%; left:50%;
-      transform: translate(-50%,-50%);
-      width:150px; height:150px;
-      border-radius:20px;
-      opacity:0;
-      box-shadow:0 0 25px rgba(255,0,100,0.8);
-      animation: fadeGlow 2s ease forwards;
-    }
+#birthdayCard h1 {
+  font-size:24px;
+  margin-bottom:10px;
+}
 
-    @keyframes fadeGlow {
-      0% { opacity:0; transform: translate(-50%,-50%) scale(0.5); }
-      50% { opacity:1; transform: translate(-50%,-50%) scale(1.2); }
-      100% { opacity:1; transform: translate(-50%,-50%) scale(1); }
-    }
+#birthdayCard p {
+  font-size:16px;
+  line-height:1.4;
+}
 
-    /* Romantic Message */
-    #message {
-      position:absolute;
-      top:80%; left:50%;
-      transform:translateX(-50%);
-      color:#ff4d6d;
-      font-size:24px;
-      opacity:0;
-      animation: messageFade 2s forwards 1s;
-    }
+/* Music */
+audio {
+  display:none;
+}
 
-    @keyframes messageFade {
-      0% { opacity:0; }
-      100% { opacity:1; }
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-  <!-- Lock Screen -->
-  <div id="lockScreen">
-    <div style="font-size:50px; animation:pulse 1.5s infinite;">❤️</div>
-    <h2>Private Surprise</h2>
-    <p>Only you know this…</p>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button onclick="checkPass()">Unlock</button>
-  </div>
+<!-- Lock Screen -->
+<div id="lockScreen">
+  <div style="font-size:50px;">🎂</div>
+  <h2>Happy Birthday Ankita!</h2>
+  <p>Enter password to unlock 🎉</p>
+  <input type="password" id="pass" placeholder="Enter password">
+  <button onclick="checkPass()">Unlock</button>
+</div>
 
-  <!-- Music -->
-  <audio id="bgMusic" src="YOUR_MUSIC_FILE.mp3"></audio>
+<!-- Music -->
+<audio id="bgMusic" src="YOUR_HAPPY_BIRTHDAY_SONG.mp3"></audio>
 
-  <!-- Romantic message -->
-  <div id="message">Tum meri zindagi ka sabse pyara gift ho... ❤️</div>
+<!-- Birthday Card -->
+<div id="birthdayCard">
+  <h1>Happy Birthday Ankita! 🎉</h1>
+  <p>Meri zindagi me tum sabse pyari ho. Tumhari smile hamesha bright rahe aur har din khushiyo se bhara ho ❤️</p>
+</div>
 
-  <script>
-    // Floating Hearts
-    function createHearts() {
-      for(let i=0;i<30;i++){
-        let heart = document.createElement("div");
-        heart.classList.add("floating-heart");
-        heart.style.left = Math.random()*window.innerWidth + "px";
-        heart.style.fontSize = 15 + Math.random()*20 + "px";
-        heart.style.color = ["#ff4d6d","#ff75a0","#ff0080"][Math.floor(Math.random()*3)];
-        heart.innerHTML="❤️";
-        document.body.appendChild(heart);
-      }
+<script>
+// Floating Stickers
+function createStickers(){
+  const stickers = ["🎂","🐱","🎈","🍰","✨","🎁"];
+  for(let i=0;i<30;i++){
+    let s = document.createElement("div");
+    s.classList.add("sticker");
+    s.innerHTML = stickers[Math.floor(Math.random()*stickers.length)];
+    s.style.left = Math.random()*window.innerWidth + "px";
+    s.style.top = window.innerHeight + "px";
+    s.style.fontSize = 15 + Math.random()*30 + "px";
+    s.style.animationDuration = 4 + Math.random()*3 + "s";
+    document.body.appendChild(s);
+  }
+}
 
-      // Sparkles
-      for(let i=0;i<20;i++){
-        let s = document.createElement("div");
-        s.classList.add("sparkle");
-        s.style.left = Math.random()*window.innerWidth + "px";
-        s.style.top = Math.random()*window.innerHeight + "px";
-        s.innerHTML="✨";
-        document.body.appendChild(s);
-      }
-    }
+// Unlock function
+function checkPass(){
+  let entered = document.getElementById("pass").value;
+  if(entered==="ANKITA"){ // password example
+    document.getElementById("lockScreen").classList.add("fadeOut");
 
-    // Show Images
-    function showImages() {
-      let img1 = document.createElement("img");
-      img1.src = "https://images.unsplash.com/photo-1555685812-4b943f1a9be0?fit=crop&w=150&h=150";
-      img1.classList.add("surprise-img");
-      document.body.appendChild(img1);
+    // Start stickers
+    createStickers();
 
-      setTimeout(()=>{
-        let img2 = document.createElement("img");
-        img2.src = "https://images.unsplash.com/photo-1573164574396-cf6e4c6c4efc?fit=crop&w=150&h=150";
-        img2.classList.add("surprise-img");
-        document.body.appendChild(img2);
-      },1000);
-    }
+    // Show card
+    document.getElementById("birthdayCard").style.display="block";
 
-    // Unlock function
-    function checkPass() {
-      let entered = document.getElementById("pass").value;
-      if(entered==="GOLU MOLU"){
-        // Fade out lock
-        document.getElementById("lockScreen").classList.add("fadeOut");
-
-        // Start hearts, sparkles
-        createHearts();
-
-        // Show images
-        showImages();
-
-        // Play music
-        let music = document.getElementById("bgMusic");
-        music.play();
-
-        // Show romantic message
-        document.getElementById("message").style.opacity=1;
-      } else {
-        alert("Wrong password 😜 Try again");
-      }
-    }
-  </script>
+    // Play music
+    let music = document.getElementById("bgMusic");
+    music.play();
+  }else{
+    alert("Wrong password 😜 Try again");
+  }
+}
+</script>
 
 </body>
 </html>
