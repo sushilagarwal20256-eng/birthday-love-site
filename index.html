@@ -2,89 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday ❤️</title>
-
-  <style>
-    body {
-      background: linear-gradient(#ff4d6d, #ff758f);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      margin: 0;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 350px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: pop 0.8s ease;
-    }
-
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 15px;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 22px;
-      border: none;
-      background: #ff4d6d;
-      color: white;
-      border-radius: 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #ff2e5f;
-    }
-
-    #msg {
-      display: none;
-      margin-top: 20px;
-      color: #333;
-      animation: fade 1s ease;
-      line-height: 1.5;
-    }
-
-    @keyframes pop {
-      from { transform: scale(0); }
-      to { transform: scale(1); }
-    }
-
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+  <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body style="margin:0; background:black; height:100vh; display:flex; justify-content:center; align-items:center; font-family:Arial, sans-serif;">
 
-  <div class="card">
-    <h1>Happy Birthday My Love 💖</h1>
+  <div style="background:#111; padding:30px; border-radius:20px; text-align:center; box-shadow:0 0 25px rgba(255,0,100,0.6); width:90%; max-width:320px;">
+    
+    <div style="font-size:50px; animation:pulse 1.5s infinite;">❤️</div>
+    <h2 style="color:#ff4d6d;">Private Surprise</h2>
+    <p style="color:#aaa;">Only you know this…</p>
 
-    <button onclick="show()">Tap for Surprise ❤️</button>
+    <input type="password" placeholder="Enter password"
+      style="width:100%; padding:12px; border-radius:10px; border:none; outline:none; margin-top:15px; font-size:16px;">
 
-    <p id="msg">
-      Tum meri zindagi ka sabse pyara gift ho 💕<br>
-      Tumhare bina sab adhoora lagta hai 🥺<br>
-      I love you forever ❤️
-    </p>
+    <button style="margin-top:15px; padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:20px; font-size:16px;">
+      Unlock
+    </button>
+
   </div>
-
-  <script>
-    function show() {
-      document.getElementById("msg").style.display = "block";
-    }
-  </script>
 
 </body>
 </html>
