@@ -2,159 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Ankita 🎂</title>
+<title>Happy Birthday Ankita 🎉</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 🌟 Premium Colors + Floating Elements -->
 <style>
 body {
   margin:0;
-  background: linear-gradient(135deg, #1c1c1c, #ff4d6d);
-  font-family: 'Arial', sans-serif;
+  padding:0;
+  background:black;
+  font-family: Arial, sans-serif;
   overflow:hidden;
-  color:white;
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
+  height:100vh;
 }
 
-/* Lock Screen */
-#lockScreen {
-  position:fixed;
-  top:0; left:0; width:100%; height:100%;
-  background:#111;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:1000;
-  transition: opacity 1s ease;
-}
-
-#lockScreen.fadeOut {
-  opacity:0;
-  pointer-events:none;
-}
-
-#lockScreen input, #lockScreen button {
-  padding:12px; font-size:16px; border-radius:10px; border:none; margin-top:15px; outline:none;
-}
-
-#lockScreen button {
-  background:#ff4d6d; color:white; cursor:pointer; border-radius:20px; padding:10px 20px;
-}
-
-#lockScreen h2 {
-  color:#ff4d6d; margin-bottom:5px;
-}
-
-#lockScreen p {
-  color:#aaa;
-  margin-bottom:15px;
-}
-
-/* Floating Stickers */
-.sticker {
+/* 🌟 Glowing Lights Animation */
+.light {
   position:absolute;
-  pointer-events:none;
-  font-size:25px;
+  width:10px;
+  height:10px;
+  background:pink;
+  border-radius:50%;
+  opacity:0.8;
+  box-shadow:0 0 15px pink, 0 0 30px #ff4d6d;
   animation: floatUp 6s linear infinite;
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-600px) rotate(360deg); }
+  0% {transform: translateY(100vh) scale(0.5); opacity:0.7;}
+  50% {opacity:1;}
+  100% {transform: translateY(-50px) scale(1);}
 }
 
-/* Card */
-#birthdayCard {
+/* Birthday Card */
+#card {
   position:absolute;
-  top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  background: #ff4d6d;
-  padding:30px;
-  border-radius:25px;
-  width:300px;
+  width:320px;
   max-width:90%;
+  background:#ff4d6d;
+  border-radius:25px;
+  padding:20px;
   text-align:center;
   box-shadow:0 0 30px rgba(255,255,255,0.5);
-  display:none;
+  cursor:pointer;
+  transition: transform 1s;
+  z-index:10;
 }
 
-#birthdayCard h1 {
-  font-size:24px;
-  margin-bottom:10px;
+#card.flipped {
+  transform: rotateY(180deg);
 }
 
-#birthdayCard p {
+#card img {
+  width:80%;
+  border-radius:15px;
+  margin-bottom:15px;
+}
+
+#card .letter {
+  color:white;
   font-size:16px;
-  line-height:1.4;
+  line-height:1.5;
+  display:block;
 }
 
-/* Music */
-audio {
+/* Back side content */
+#backContent {
   display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  color:white;
+  font-size:20px;
+  text-align:center;
+  z-index:10;
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- Lock Screen -->
-<div id="lockScreen">
-  <div style="font-size:50px;">🎂</div>
-  <h2>Happy Birthday Ankita!</h2>
-  <p>Enter password to unlock 🎉</p>
-  <input type="password" id="pass" placeholder="Enter password">
-  <button onclick="checkPass()">Unlock</button>
+<!-- Glowing Lights -->
+<div id="lightsContainer"></div>
+
+<!-- Birthday Card -->
+<div id="card" onclick="flipCard()">
+  <img src="https://images.unsplash.com/photo-1599785209707-19624e5a1d72?fit=crop&w=300&h=200" alt="Cake">
+  <span class="letter">
+    Happy Birthday Ankita! 🎉<br><br>
+    Wishing you a day full of smiles, love, and sweet moments. May your year ahead be bright and filled with happiness ❤️
+  </span>
+</div>
+
+<!-- Back Content -->
+<div id="backContent">
+  🎁 Surprise! You are amazing and loved. Enjoy your special day! 🎂
+  <br><br>
+  <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?fit=crop&w=250&h=150" style="border-radius:15px;">
 </div>
 
 <!-- Music -->
-<audio id="bgMusic" src="YOUR_HAPPY_BIRTHDAY_SONG.mp3"></audio>
-
-<!-- Birthday Card -->
-<div id="birthdayCard">
-  <h1>Happy Birthday Ankita! 🎉</h1>
-  <p>Meri zindagi me tum sabse pyari ho. Tumhari smile hamesha bright rahe aur har din khushiyo se bhara ho ❤️</p>
-</div>
+<audio id="bgMusic" src="YOUR_HAPPY_BIRTHDAY_SONG.mp3" autoplay></audio>
 
 <script>
-// Floating Stickers
-function createStickers(){
-  const stickers = ["🎂","🐱","🎈","🍰","✨","🎁"];
-  for(let i=0;i<30;i++){
-    let s = document.createElement("div");
-    s.classList.add("sticker");
-    s.innerHTML = stickers[Math.floor(Math.random()*stickers.length)];
-    s.style.left = Math.random()*window.innerWidth + "px";
-    s.style.top = window.innerHeight + "px";
-    s.style.fontSize = 15 + Math.random()*30 + "px";
-    s.style.animationDuration = 4 + Math.random()*3 + "s";
-    document.body.appendChild(s);
-  }
+// 🌟 Glowing lights
+const lightsContainer = document.getElementById("lightsContainer");
+for(let i=0; i<50; i++){
+  let light = document.createElement("div");
+  light.classList.add("light");
+  light.style.left = Math.random() * window.innerWidth + "px";
+  light.style.top = window.innerHeight + "px";
+  light.style.width = 5 + Math.random()*10 + "px";
+  light.style.height = 5 + Math.random()*10 + "px";
+  light.style.animationDuration = 4 + Math.random()*4 + "s";
+  lightsContainer.appendChild(light);
 }
 
-// Unlock function
-function checkPass(){
-  let entered = document.getElementById("pass").value;
-  if(entered==="ANKITA"){ // password example
-    document.getElementById("lockScreen").classList.add("fadeOut");
+// Flip card function
+function flipCard(){
+  const card = document.getElementById("card");
+  const back = document.getElementById("backContent");
 
-    // Start stickers
-    createStickers();
+  card.style.display="none";
+  back.style.display="block";
 
-    // Show card
-    document.getElementById("birthdayCard").style.display="block";
-
-    // Play music
-    let music = document.getElementById("bgMusic");
-    music.play();
-  }else{
-    alert("Wrong password 😜 Try again");
-  }
+  // optional: scroll animation for effect
 }
+
+// Auto play music
+document.getElementById("bgMusic").play().catch(()=>{});
 </script>
 
 </body>
