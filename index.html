@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Happy Birthday ❤️</title>
+
   <style>
     body {
       background: linear-gradient(#ff4d6d, #ff758f);
@@ -21,16 +23,17 @@
       width: 90%;
       max-width: 350px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: pop 1s ease;
+      animation: pop 0.8s ease;
     }
 
     h1 {
       color: #ff4d6d;
+      margin-bottom: 15px;
     }
 
     button {
       margin-top: 15px;
-      padding: 10px 20px;
+      padding: 10px 22px;
       border: none;
       background: #ff4d6d;
       color: white;
@@ -39,11 +42,16 @@
       cursor: pointer;
     }
 
+    button:hover {
+      background: #ff2e5f;
+    }
+
     #msg {
       display: none;
-      margin-top: 15px;
+      margin-top: 20px;
       color: #333;
       animation: fade 1s ease;
+      line-height: 1.5;
     }
 
     @keyframes pop {
@@ -59,11 +67,16 @@
 </head>
 
 <body>
+
   <div class="card">
-    <h1>Happy Birthday My Love💖 </h1>
+    <h1>Happy Birthday My Love 💖</h1>
+
     <button onclick="show()">Tap for Surprise ❤️</button>
+
     <p id="msg">
-      Tum meri zindagi ka sabse pyara surprise ho...
+      Tum meri zindagi ka sabse pyara gift ho 💕<br>
+      Tumhare bina sab adhoora lagta hai 🥺<br>
+      I love you forever ❤️
     </p>
   </div>
 
@@ -72,5 +85,6 @@
       document.getElementById("msg").style.display = "block";
     }
   </script>
+
 </body>
 </html>
