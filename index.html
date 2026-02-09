@@ -2,25 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For You ❤️</title>
+  <title>Happy Birthday My Love ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 💖 Floating Hearts CSS -->
+  <!-- 💖 Floating Hearts, Cute Images & Sparkle CSS -->
   <style>
+    body {
+      margin: 0;
+      background: linear-gradient(#111, #000);
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* Center Card */
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 0 35px rgba(255,0,100,0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+    }
+
+    .card:hover {
+      transform: translate(-50%, -50%) scale(1.05);
+      box-shadow: 0 0 50px rgba(255,0,100,0.9);
+    }
+
+    .card h2 {
+      color: #ff4d6d;
+      margin: 15px 0;
+      font-size: 24px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Floating Hearts */
     .floating-heart {
       position: absolute;
       font-size: 20px;
       animation: floatUp 5s linear infinite;
       opacity: 0.8;
       pointer-events: none;
+      color: #ff4d6d;
+      text-shadow: 0 0 8px #ff4d6d, 0 0 12px #ff85a2;
     }
 
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-500px) rotate(360deg); }
+      0% { transform: translateY(0) rotate(0deg); opacity:0.8;}
+      50% { opacity:1;}
+      100% { transform: translateY(-600px) rotate(360deg); opacity:0;}
     }
 
-    /* ❤️ Step 4.3 – Cute Images Fade + Glow */
+    /* Cute Images */
     .surprise-img {
       position: absolute;
       top: 50%;
@@ -29,9 +100,10 @@
       width: 150px;
       height: 150px;
       border-radius: 20px;
-      opacity: 0; /* initially invisible */
+      opacity: 0;
       box-shadow: 0 0 25px rgba(255,0,100,0.8);
       animation: fadeGlow 2s ease forwards;
+      z-index: 900;
     }
 
     @keyframes fadeGlow {
@@ -39,81 +111,145 @@
       50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
       100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-  </style>
 
+    /* Romantic Messages */
+    .msg {
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: #ff4d6d;
+      opacity: 0;
+      animation: fadeMsg 2s forwards;
+      z-index: 800;
+    }
+
+    @keyframes fadeMsg {
+      0% { opacity: 0; transform: translateY(-20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Sparkle effect */
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #ff85a2;
+      border-radius: 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: sparkleAnim 2s linear infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0% {transform: scale(0) translateY(0); opacity:0.8;}
+      50% {opacity:1;}
+      100% {transform: scale(1.5) translateY(-100px); opacity:0;}
+    }
+
+    audio {
+      display: none;
+    }
+
+  </style>
 </head>
 
-<body style="margin:0; background:black; height:100vh; display:flex; justify-content:center; align-items:center; font-family:Arial, sans-serif;">
+<body>
 
-  <div style="background:#111; padding:30px; border-radius:20px; text-align:center; box-shadow:0 0 25px rgba(255,0,100,0.6); width:90%; max-width:320px;">
-    
+  <!-- 🎵 Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Center Card -->
+  <div class="card">
     <div style="font-size:50px; animation:pulse 1.5s infinite;">❤️</div>
-    <h2 style="color:#ff4d6d;">Private Surprise</h2>
-    <p style="color:#aaa;">Only you know this…</p>
-
-    <!-- Password input -->
-    <input type="password" id="pass" placeholder="Enter password"
-      style="width:100%; padding:12px; border-radius:10px; border:none; outline:none; margin-top:15px; font-size:16px;">
-
-    <!-- Unlock button -->
-    <button onclick="checkPass()" style="margin-top:15px; padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:20px; font-size:16px;">
-      Unlock
-    </button>
-
+    <h2>Private Surprise</h2>
+    <p>Only you know this…</p>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button onclick="checkPass()">Unlock</button>
   </div>
 
-  <!-- Audio for music -->
-  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" loop></audio>
-
-  <!-- JavaScript Password Check + Floating Hearts + Cute Images + Music -->
   <script>
-    // Floating Hearts function
+    // Floating Hearts
     function createHearts() {
-      for(let i=0; i<30; i++){
-        let heart = document.createElement("div");
+      for(let i=0;i<60;i++){
+        let heart=document.createElement("div");
         heart.classList.add("floating-heart");
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.fontSize = 15 + Math.random()*20 + "px";
-        heart.style.animationDuration = 4 + Math.random()*3 + "s";
-        heart.innerHTML = "❤️";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.fontSize=15+Math.random()*25+"px";
+        heart.style.animationDuration=4+Math.random()*3+"s";
+        heart.innerHTML="❤️";
         document.body.appendChild(heart);
       }
     }
 
-    // Show cute images function
-    function showImage() {
-      let img1 = document.createElement("img");
-      img1.src = "https://images.unsplash.com/photo-1555685812-4b943f1a9be0?fit=crop&w=150&h=150";
-      img1.classList.add("surprise-img");
-      document.body.appendChild(img1);
+    // Cute Images
+    function showImages(){
+      let imgs = [
+        "https://images.unsplash.com/photo-1555685812-4b943f1a9be0?fit=crop&w=150&h=150",
+        "https://images.unsplash.com/photo-1573164574396-cf6e4c6c4efc?fit=crop&w=150&h=150",
+        "https://images.unsplash.com/photo-1560807707-8cc77767d783?fit=crop&w=150&h=150"
+      ];
 
-      setTimeout(() => {
-        let img2 = document.createElement("img");
-        img2.src = "https://images.unsplash.com/photo-1573164574396-cf6e4c6c4efc?fit=crop&w=150&h=150";
-        img2.classList.add("surprise-img");
-        document.body.appendChild(img2);
-      }, 1000);
+      imgs.forEach((src,i)=>{
+        setTimeout(()=>{
+          let img=document.createElement("img");
+          img.src=src;
+          img.classList.add("surprise-img");
+          document.body.appendChild(img);
+        }, i*1000);
+      });
     }
 
-    // Password check function
-    function checkPass() {
-      var entered = document.getElementById("pass").value;
+    // Romantic Messages
+    function showMessages(){
+      let msgs=[
+        "Tum meri zindagi ka sabse pyara hissa ho ❤️",
+        "Meri duniya tumhare bina adhoori hai 😘",
+        "Har pal tumhare saath jeena chahta hu 💖",
+        "Happy Birthday My Love 🎉💗"
+      ];
 
-      if (entered === "GOLU MOLU") {
+      msgs.forEach((text,i)=>{
+        setTimeout(()=>{
+          let m = document.createElement("div");
+          m.classList.add("msg");
+          m.style.top = `${20 + i*10}%`;
+          m.innerText = text;
+          document.body.appendChild(m);
+        }, i*2000);
+      });
+    }
+
+    // Sparkle effect
+    function createSparkles(){
+      for(let i=0;i<50;i++){
+        let s = document.createElement("div");
+        s.classList.add("sparkle");
+        s.style.left=Math.random()*window.innerWidth+"px";
+        s.style.top=Math.random()*window.innerHeight+"px";
+        s.style.animationDuration=(2+Math.random()*2)+"s";
+        document.body.appendChild(s);
+      }
+    }
+
+    // Password check + trigger surprises
+    function checkPass(){
+      let entered = document.getElementById("pass").value;
+      if(entered==="GOLU MOLU"){
         alert("Unlocked ❤️ Next surprise coming...");
-
-        // Step 4.2 & 4.3
-        createHearts();  // floating hearts
-        showImage();     // cute images fade + glow
-
-        // Step 4.1 – Play music
-        var music = document.getElementById("bg-music");
-        music.play();
-
-      } else {
+        document.getElementById("bgMusic").play();
+        createHearts();
+        showImages();
+        showMessages();
+        createSparkles(); // sparkle added
+      }else{
         alert("Wrong password 😜 Try again");
       }
     }
+
   </script>
 
 </body>
